@@ -6,8 +6,8 @@ pipeline {
 
     environment {
         PRODUCT = 'ghcli'
-        GIT_HOST = 'somewhere'
         GIT_REPO = 'https://github.com/hanrikos/WorldOfGames'
+        GIT_MAIN_BRANCH = 'main'
     }
 
     options {
@@ -17,64 +17,67 @@ pipeline {
     }
 
     stages {
-        // ② Checkout the right branch
+        // Ⓐ Retrieve the project code from the repository. Extract the branch
+        // name from the context of execution which can be a branch build or a pull
+        // request build.
         stage('Checkout') {
             steps {
                 script {
                     BRANCH_NAME = env.CHANGE_BRANCH ? env.CHANGE_BRANCH : env.BRANCH_NAME
                     deleteDir()
-                    git url: "git@<host>:<org>/${env.PRODUCT}.git", branch: BRANCH_NAME
+                    git url: "git@<githubHost>:<org>/<repo>.git", branch: BRANCH_NAME
                 }
             }
         }
 
+
 	// ③ Build a container with the code source of the application
         stage('Build') {
             steps {
-                sh "docker build . -t ${env.PRODUCT}:py"
+                script {
+                    sh "docker build -t worldofgames -f Dockerfile ."
+                }
             }
         }
+
+
+
+	// ④ Create container from image
+        stage('Run') {
+            steps {
+                script {
+                    sh " docker compose up"
+                }
+            }
+        }
+
 
 	// ④ Run the test using the built docker image
         stage('Test') {
             steps {
                 script {
-                    sh "docker run --tty --name ${env.PRODUCT} ${env.PRODUCT}:py /usr/bin/make test"
+                    sh "python3 ./tests/e2e.py"
                 }
             }
         }
 
-    	// ⑤ Analyse code quality using previous container as a Docker Container Volume
-        stage('Quality') {
-            steps {
-                withCredentials([string(credentialsId: '<credentialsId>', variable: 'SONAR_LOGIN')]) {
-                    script {
-			// ⑥ Compute some arguments depending we are on main, branch or pull request.
-                        if (env.CHANGE_ID) {
-                            options = "-Dsonar.pullrequest.branch=${env.CHANGE_BRANCH} "
-                            options += " -Dsonar.pullrequest.key=${env.CHANGE_ID} "
-                            options += " -Dsonar.pullrequest.base=${env.CHANGE_TARGET}"
-                        } else if (BRANCH_NAME == 'main') {
-                            options = ''
-                        } else {
-                            options = "-Dsonar.branch.name=${BRANCH_NAME}"
-                        }
+		stage('Login') {
+			steps {
+			    script {
+				    sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+				}
+			}
+		}
 
-			// ⑦ Mount the previous Docker Container as a Volume
-		    	// to Sonar container to analyse the code
-                        sh "docker run \
-                            --rm \
-                            -e SONAR_HOST_URL=https://<sonarHost> \
-                            -e SONAR_LOGIN=${SONAR_LOGIN} \
-                            --volumes-from ${env.PRODUCT} \
-                            sonarsource/sonar-scanner-cli \
-                            sonar-scanner ${options}"
-                    }
-                }
-            }
-        }
-    }
 
+		stage('Push') {
+			steps {
+			    script {
+				    sh 'docker push devopshenry/worldofgames:latest'
+			    }
+			}
+		}
+	}
 	// ⑧ Cleanup
     post {
         always {

@@ -20,7 +20,7 @@ class ScoreTest(unittest.TestCase):
             self.driver = webdriver.Chrome(executable_path="c:/chromedriver.exe")
 
     def test_scores_service(self):
-        self.driver.get("http://127.0.0.1:5000/")
+        self.driver.get("http://127.0.0.1:8777/")
         score_from_web = self.driver.find_element(by="id", value="score").text
         return self.assertTrue(1 <= int(score_from_web) <= 1000)
 
