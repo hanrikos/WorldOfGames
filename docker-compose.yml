@@ -1,0 +1,12 @@
+version: '2'
+services:
+    web:
+        build: .
+        ports:
+            - "5000:8777"
+        volumes:
+            - .:/app
+    Game:
+        build: .
+        volumes:
+          - .:/app

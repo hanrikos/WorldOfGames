@@ -1,7 +1,16 @@
-FROM python:3
-RUN git clone https://github.com/ #TODO add repo
-WORKDIR mygit # TODO add repo folder
+FROM python:3.8-slim-buster
 
-CMD ["cat", "./Scores.txt"]
-CMD [ "python3", "./MainScores.py" ]
+COPY ./requirements.txt /app/requirements.txt
+
+WORKDIR /app
+
+RUN pip3 install -r requirements.txt
+
+EXPOSE 5000
+
+COPY . /app
+
+ENTRYPOINT ["python3"]
+
+CMD ["./MainScores.py"]
 
