@@ -37,11 +37,18 @@ pipeline {
 
 
 	// ④ Create container from image
-        stage('Run') {
+        stage("Run") {
             steps {
-                script {
-                   sh "/usr/local/bin/docker-compose up ."
-                }
+                sh "docker-composer build"
+                sh "docker-compose up -d"
+                sh """
+                    docker run --rm \
+                        -v '${env.WORKSPACE}':'/project':ro \
+                        -v /var/run/docker.sock:/var/run/docker.sock:ro \
+                        -e TIMEOUT=30 \
+                        -e PRODUCT=\$(basename \"'${env.WORKSPACE}'\") \
+                        softonic/compose-project-is-up
+                """
             }
         }
 
