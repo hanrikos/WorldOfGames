@@ -19,7 +19,7 @@ pipeline {
                 script {
                     BRANCH_NAME = env.CHANGE_BRANCH ? env.CHANGE_BRANCH : env.BRANCH_NAME
                     deleteDir()
-                    git url: "git@<githubHost>:<org>/<repo>.git", branch: BRANCH_NAME
+                    git url: "git@github.com:hanrikos/WorldOfGames.git", branch: BRANCH_NAME
                 }
             }
         }
