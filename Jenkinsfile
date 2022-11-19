@@ -43,7 +43,7 @@ pipeline {
         stage("Run") {
             steps {
                 //sh "docker-compose up -d"
-                sh "docker run --name $rrandom_container_num -d -p 8777:5000 worldofgames"
+                sh "docker run --name $random_container_num -d -p 8777:5000 worldofgames"
             }
         }
 
@@ -52,7 +52,7 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    sh "docker exec -it $rrandom_container_num python /tests/e2e.py"
+                    sh "docker exec -it $random_container_num python /tests/e2e.py"
                 }
             }
         }
