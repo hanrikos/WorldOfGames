@@ -9,7 +9,7 @@ pipeline {
         PRODUCT = 'worldofgames'
         GIT_REPO = 'https://github.com/hanrikos/WorldOfGames'
         GIT_MAIN_BRANCH = 'main'
-        max = 10
+        max = 999999
         random_container_num = "${Math.abs(new Random().nextInt(max+1))}"
     }
 
