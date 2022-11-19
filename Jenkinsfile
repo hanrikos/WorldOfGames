@@ -45,7 +45,8 @@ pipeline {
                         -v '${env.WORKSPACE}':'/project':ro \
                         -v /var/run/docker.sock:/var/run/docker.sock:ro \
                         -e TIMEOUT=30 \
-                        -e PRODUCT=\$(basename \"'${env.WORKSPACE}'\")
+                        -e PRODUCT=\$(basename \"'${env.WORKSPACE}'\") \
+                        worldofgames
                 """
             }
         }
