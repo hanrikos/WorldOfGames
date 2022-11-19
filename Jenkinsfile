@@ -50,7 +50,7 @@ pipeline {
             steps {
                 script {
                     //sh "docker exec -it worldofgames_container python /tests/e2e.py"
-                    sh "docker exec -it worldofgames_container /bin/bash pwd && ls -la"
+                    sh "docker exec -d worldofgames_container /bin/bash pwd"
                 }
             }
         }
