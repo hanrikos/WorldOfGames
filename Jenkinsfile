@@ -40,7 +40,7 @@ pipeline {
         stage('Run') {
             steps {
                 script {
-                   "sh docker run --tty --name ${env.PRODUCT} ${env.PRODUCT}:py /usr/bin/python MainScores.py"
+                   "sh docker run --tty --name worldofgames worldofgames:py /usr/bin/python MainScores.py"
                 }
             }
         }
