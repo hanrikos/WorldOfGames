@@ -17,9 +17,9 @@ pipeline {
         stage('Checkout') {
             steps {
                 script {
-                    BRANCH_NAME = env.CHANGE_BRANCH ? env.CHANGE_BRANCH : env.BRANCH_NAME
-                    deleteDir()
-                    git url: "git@github.com:hanrikos/WorldOfGames.git", branch: BRANCH_NAME
+                    git branch: 'main',
+                    credentialsId: '150b0133-ca98-4845-91d8-d6d19e9657d9',
+                    url: 'ssh://git@github.com/hanrikos/WorldOfGames.git'
                 }
             }
         }
