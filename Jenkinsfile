@@ -10,12 +10,6 @@ pipeline {
         GIT_MAIN_BRANCH = 'main'
     }
 
-    options {
-        ansiColor('xterm')
-        skipDefaultCheckout()
-        buildDiscarder(logRotator(numToKeepStr: '10'))
-    }
-
     stages {
         // Ⓐ Retrieve the project code from the repository. Extract the branch
         // name from the context of execution which can be a branch build or a pull
