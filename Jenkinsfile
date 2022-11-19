@@ -50,7 +50,7 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    sh "python3 ./tests/e2e.py"
+                    sh "sh docker exec -it --name ${env.PRODUCT} ${env.PRODUCT}:py /usr/bin/python ./tests/e2e.py"
                 }
             }
         }
