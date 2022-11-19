@@ -12,5 +12,5 @@ COPY . /app
 
 ENTRYPOINT ["python"]
 
-CMD ["./MainScores.py"]
+CMD ["MainScores.py"]
 
