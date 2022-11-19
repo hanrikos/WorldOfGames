@@ -40,7 +40,7 @@ pipeline {
         stage('Run') {
             steps {
                 script {
-                   sh "docker run worldofgames"
+                   "sh docker run --tty --name worldofgames worldofgames:py /usr/bin/python MainScores.py"
                 }
             }
         }
@@ -49,24 +49,25 @@ pipeline {
 	// ④ Run the test using the built docker image
         stage('Test') {
             steps {
-                    sh "docker exec -it --name worldofgames ${env.PRODUCT}:py /usr/bin/python ./tests/e2e.py"
+                script {
+                    sh "sh docker exec -it --name worldofgames /usr/bin/python ./tests/e2e.py"
                 }
             }
         }
-    // ④ login to docker hub
+
 		stage('Login') {
 			steps {
 			    script {
-				    sh "echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin"
+				    sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
 				}
 			}
 		}
 
-    // ④ push ocker image to docker hub
+
 		stage('Push') {
 			steps {
 			    script {
-				    sh "docker push devopshenry/worldofgames:latest"
+				    sh 'docker push devopshenry/worldofgames:latest'
 			    }
 			}
 		}
@@ -80,3 +81,4 @@ pipeline {
             deleteDir()
         }
     }
+}
