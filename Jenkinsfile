@@ -78,7 +78,7 @@ pipeline {
     post {
         always {
             script {
-                sh "docker rm ${env.PRODUCT}"
+                sh "docker rm -d $random_container_num"
             }
             deleteDir()
         }
