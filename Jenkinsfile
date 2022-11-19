@@ -40,7 +40,7 @@ pipeline {
         stage("Run") {
             steps {
                 //sh "docker-compose up -d"
-                sh "docker run -p 8777:5000 -d worldofgames_container"
+                sh "docker run -d -p 8777:5000 worldofgames"
             }
         }
 
@@ -49,7 +49,7 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    sh "docker exec -it worldofgames_container python /tests/e2e.py"
+                    sh "docker exec -it worldofgames python /tests/e2e.py"
                 }
             }
         }
