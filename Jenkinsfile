@@ -50,7 +50,7 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    sh "sh docker run -d --name worldofgames worldofgames /usr/bin/python version"
+                    sh "docker run -d --name worldofgames worldofgames /usr/bin/python ./tests/e2e.py"
                 }
             }
         }
