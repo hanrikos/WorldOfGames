@@ -14,6 +14,6 @@ RUN ["pwd"]
 RUN ["ls" ,"-la"]
 
 ENTRYPOINT ["python"]
-RUN ["MainScores.py"]
+CMD ["MainScores.py"]
 
 
