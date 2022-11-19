@@ -40,9 +40,7 @@ pipeline {
         stage("Run") {
             steps {
                 sh "docker-compose up -d"
-                sh """
-                    docker run --rm worldofgames
-                """
+                sh "docker run -d -p 8777:5000 worldofgames"
             }
         }
 
