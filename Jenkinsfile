@@ -5,7 +5,7 @@ pipeline {
     }
 
     environment {
-        PRODUCT = 'ghcli'
+        PRODUCT = 'worldofgames'
         GIT_REPO = 'https://github.com/hanrikos/WorldOfGames'
         GIT_MAIN_BRANCH = 'main'
     }
@@ -29,10 +29,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    sh "whoami"
                     sh "docker build -t worldofgames -f Dockerfile ."
-                    sh "pwd"
-                    sh "whoami"
                 }
             }
         }
@@ -43,10 +40,7 @@ pipeline {
         stage('Run') {
             steps {
                 script {
-                    sh "whoami"
-                    sh " docker-compose up"
-                    sh "pwd"
-                    sh "whoami"
+                   "sh docker run --tty --name ${env.PRODUCT} ${env.PRODUCT}:py /usr/bin/python MainScores.py"
                 }
             }
         }
