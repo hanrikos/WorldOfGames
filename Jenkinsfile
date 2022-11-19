@@ -40,7 +40,7 @@ pipeline {
         stage('Run') {
             steps {
                 script {
-                   sh "docker run -d --name worldofgames worldofgames python MainScores.py"
+                   sh "docker-compose up"
                 }
             }
         }
