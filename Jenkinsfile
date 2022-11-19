@@ -39,7 +39,6 @@ pipeline {
 	// ④ Create container from image
         stage("Run") {
             steps {
-                sh "docker-composer build"
                 sh "docker-compose up -d"
                 sh """
                     docker run --rm \
