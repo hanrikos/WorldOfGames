@@ -10,7 +10,7 @@ EXPOSE 8777
 
 COPY . /app
 
-ENTRYPOINT ["python3"]
+ENTRYPOINT ["python"]
 
 CMD ["./MainScores.py"]
 
