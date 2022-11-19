@@ -1,7 +1,7 @@
 pipeline {
     // Select a Jenkins slave with Docker capabilities
     agent {
-        label 'master'
+        label 'built-in node'
     }
 
     environment {
