@@ -53,7 +53,7 @@ pipeline {
                 }
             }
         }
-
+    // ④ login to docker hub
 		stage('Login') {
 			steps {
 			    script {
@@ -62,7 +62,7 @@ pipeline {
 			}
 		}
 
-
+    // ④ push ocker image to docker hub
 		stage('Push') {
 			steps {
 			    script {
