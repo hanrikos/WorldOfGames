@@ -40,7 +40,7 @@ pipeline {
         stage('Run') {
             steps {
                 script {
-                   sh "docker run -d --name worldofgames worldofgames /usr/bin/python MainScores.py"
+                   sh "docker run worldofgames /usr/bin/python MainScores.py"
                 }
             }
         }
@@ -50,7 +50,7 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    sh "docker run -d --name worldofgames worldofgames /usr/bin/python ./tests/e2e.py"
+                    sh "docker run worldofgames /usr/bin/python ./tests/e2e.py"
                 }
             }
         }
