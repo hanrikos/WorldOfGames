@@ -49,7 +49,7 @@ pipeline {
 	// ④ Run the test using the built docker image
         stage('Test') {
             steps {
-                    sh "sh docker exec -it --name worldofgames ${env.PRODUCT}:py /usr/bin/python ./tests/e2e.py"
+                    "sh docker exec -it --name worldofgames ${env.PRODUCT}:py /usr/bin/python ./tests/e2e.py"
                 }
             }
         }
