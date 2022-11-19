@@ -13,7 +13,6 @@ COPY . /app
 RUN ["pwd"]
 RUN ["ls" ,"-la"]
 
-ENTRYPOINT ["python"]
 CMD ["python", "MainScores.py"]
 
 
