@@ -40,7 +40,7 @@ pipeline {
         stage('Run') {
             steps {
                 script {
-                   "sh docker run --tty --name worldofgames worldofgames:py /usr/bin/python MainScores.py"
+                   "sh docker run worldofgames"
                 }
             }
         }
@@ -49,8 +49,7 @@ pipeline {
 	// ④ Run the test using the built docker image
         stage('Test') {
             steps {
-                script {
-                    sh "sh docker exec -it --name ${env.PRODUCT} ${env.PRODUCT}:py /usr/bin/python ./tests/e2e.py"
+                    sh "sh docker exec -it --name worldofgames ${env.PRODUCT}:py /usr/bin/python ./tests/e2e.py"
                 }
             }
         }
