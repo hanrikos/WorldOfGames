@@ -1,3 +1,11 @@
+def generator = { String alphabet, int n ->
+  new Random().with {
+    (1..n).collect { alphabet[ nextInt( alphabet.length() ) ] }.join()
+  }
+}
+
+def container_name = generator( (('A'..'Z')+('0'..'9')).join(), 9 )
+
 pipeline {
     // Select a Jenkins slave with Docker capabilities
     agent {
@@ -40,7 +48,7 @@ pipeline {
         stage("Run") {
             steps {
                 //sh "docker-compose up -d"
-                sh "docker run --name worldofgames_container -d -p 8777:5000 worldofgames"
+                sh "docker run --name $container_name -d -p 8777:5000 worldofgames"
             }
         }
 
@@ -49,7 +57,7 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    sh "docker exec -it worldofgames_container python /tests/e2e.py"
+                    sh "docker exec -it $container_name python /tests/e2e.py"
                 }
             }
         }
