@@ -29,7 +29,10 @@ pipeline {
         stage('Build') {
             steps {
                 script {
+                    sh "whoami"
                     sh "docker build -t worldofgames -f Dockerfile ."
+                    sh "pwd"
+                    sh "whoami"
                 }
             }
         }
@@ -40,7 +43,10 @@ pipeline {
         stage('Run') {
             steps {
                 script {
+                    sh "whoami"
                     sh " docker-compose up"
+                    sh "pwd"
+                    sh "whoami"
                 }
             }
         }
