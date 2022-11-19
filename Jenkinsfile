@@ -79,7 +79,7 @@ pipeline {
         always {
             script {
                 sh "docker rm --force $random_container_num"
-                sh "docker image prune -a -y"
+                sh "docker image prune"
             }
             deleteDir()
         }
