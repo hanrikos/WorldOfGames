@@ -1,10 +1,5 @@
-def generator = { String alphabet, int n ->
-  new Random().with {
-    (1..n).collect { alphabet[ nextInt( alphabet.length() ) ] }.join()
-  }
-}
 
-def container_name = $generator( (('A'..'Z')+('0'..'9')).join(), 9 )
+def container_name = String randomString = org.apache.commons.lang.RandomStringUtils.random(9, true, true)
 
 pipeline {
     // Select a Jenkins slave with Docker capabilities
