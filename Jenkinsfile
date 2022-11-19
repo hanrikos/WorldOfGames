@@ -40,7 +40,7 @@ pipeline {
         stage('Run') {
             steps {
                 script {
-                   sh "/usr/local/bin/docker-compose/docker-compose up ."
+                   sh "/usr/local/bin/docker-compose up ."
                 }
             }
         }
