@@ -4,7 +4,7 @@ def generator = { String alphabet, int n ->
   }
 }
 
-def container_name = generator( (('A'..'Z')+('0'..'9')).join(), 9 )
+def container_name = $generator( (('A'..'Z')+('0'..'9')).join(), 9 )
 
 pipeline {
     // Select a Jenkins slave with Docker capabilities
