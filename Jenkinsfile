@@ -52,7 +52,7 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    sh "docker exec -it $random_container_num python /tests/e2e.py"
+                    sh "docker exec -d $random_container_num python /tests/e2e.py"
                 }
             }
         }
