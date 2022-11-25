@@ -41,4 +41,7 @@ def load_game():
         result = MemoryGame.play(game_difficulty)
     if chosen_game == 3:
         result = CurrencyRouletteGame.play(game_difficulty)
+    else:
+        print("Invalid chose. Lets play guess game")
+        result = GuessGame.play(game_difficulty)
     return result, game_difficulty

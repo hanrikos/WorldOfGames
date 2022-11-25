@@ -6,13 +6,13 @@ WORKDIR /app
 
 RUN pip3 install -r requirements.txt
 
-EXPOSE 8777
+EXPOSE 5012
 
 COPY . /app
 
 RUN ["pwd"]
 RUN ["ls" ,"-la"]
 
-CMD ["python", "MainScores.py"]
+CMD ["python", "MainGame.py"]
 
 

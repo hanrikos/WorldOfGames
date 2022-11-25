@@ -1,8 +1,16 @@
 version: '2'
 services:
-    app:
+    web:
+        build: nginx
+        ports:
+            - 80:80
+            - 443:443
+        depends_on:
+            - api
+
+    api:
         build: .
         ports:
-            - "8777:5000"
+            - "5012:5012"
         volumes:
             - .:/app

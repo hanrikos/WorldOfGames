@@ -18,6 +18,8 @@ def add_score(difficulty):
     with open('Scores.txt', 'w') as f:
         f.write(str(new_score))
 
+    return new_score
+
 
 def get_score():
     scores_file = open('Scores.txt', 'r')
