@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{difficulty}}</title>
+</head>
+<body>
+
+</body>
+</html><html>
+    <style>
+        html{
+            margin: auto;
+            max-width: 1000px;
+        }
+
+        body{
+            text-align: center;
+        }
+
+        h1.main_title{
+            font-size: 3em;
+            color: black;
+        }
+
+        @keyframes backgroundScroll {
+            0% { background-position: 50% 50%; }
+            33% { background-position: 50% 1%; }
+            40% { background-position: 50% 1%; }
+            66% { background-position: 50% 99%; }
+            75% { background-position: 50% 99%; }
+            100% { background-position: 50% 50%; }
+        }
+        /* added pauses to each edge of the image */
+
+        div.main_title {
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin: auto;
+            background-position: 50% 50%;
+            animation: backgroundScroll 10s ease-in-out 1s infinite;
+            border-radius: 2em;
+            box-shadow: rgba(3, 8, 20, 0.1) 0px 0.15rem 0.5rem, rgba(2, 8, 20, 0.1) 0px 0.075rem 0.175rem;
+        }
+
+        div.error{
+            background-color:indianred;
+            border-radius: 2em;
+            padding: 1em;
+            margin: 1em;
+            box-shadow: rgba(3, 8, 20, 0.1) 0px 0.15rem 0.5rem, rgba(2, 8, 20, 0.1) 0px 0.075rem 0.175rem;
+        }
+
+        div.create{
+            background-color: crimson;
+            border-radius: 2em;
+            padding: 1em;
+            margin: 1em;
+            box-shadow: rgba(3, 8, 20, 0.1) 0px 0.15rem 0.5rem, rgba(2, 8, 20, 0.1) 0px 0.075rem 0.175rem;
+        }
+
+        div.form{
+            padding: 1em;
+        }
+
+        div.instructions{
+            background-color:gainsboro;
+            border-radius: 2em;
+            padding: 1em;
+            margin: 1em;
+            box-shadow: rgba(3, 8, 20, 0.1) 0px 0.15rem 0.5rem, rgba(2, 8, 20, 0.1) 0px 0.075rem 0.175rem;
+        }
+
+        div.creds{
+            background-color: skyblue;
+            border-radius: 2em;
+            padding: 1em;
+            margin: 1em;
+            box-shadow: rgba(3, 8, 20, 0.1) 0px 0.15rem 0.5rem, rgba(2, 8, 20, 0.1) 0px 0.075rem 0.175rem;
+        }
+
+        div.note{
+            background-color:sandybrown;
+            border-radius: 2em;
+            padding: 1em;
+            margin: 1em;
+            box-shadow: rgba(3, 8, 20, 0.1) 0px 0.15rem 0.5rem, rgba(2, 8, 20, 0.1) 0px 0.075rem 0.175rem;
+        }
+    </style>
+
+    <head>
+
+    </head>
+
+    <body>
+
+        <div class="main_title">
+            <h1 class="main_title">
+                World of Games
+            </h1>
+        </div>
+        <div class="create">
+            <h2>
+                Welcome {{difficulty}}!<br>
+            </h2>
+
+        </div>
+
+        <div class="creds">
+            <p>
+                Written by Henry
+            </p>
+
+            <p>
+                Code can be found at <a href="https://github.com/hanrikos"> Github </a>
+            </p>
+        </div>
+
+    </body>
+
+</html>
+2022 DevopsExperts, Inc.

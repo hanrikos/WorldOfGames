@@ -1,7 +1,7 @@
 from random import randint
 """
-The purpose of guess game is to start a new game, cast a random number between 1 to a
-variable called difficulty. The game will get a number input from the
+The purpose of guess games is to start a new games, cast a random number between 1 to a
+variable called difficulty. The games will get a number input from the
 """
 difficulty: int
 

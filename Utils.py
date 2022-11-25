@@ -1,7 +1,7 @@
 import os
 """
 A general purpose python file. This file will contain general information and operations we need
-for our game.
+for our games.
 """
 
 SCORES_FILE_NAME = "Scores.txt"

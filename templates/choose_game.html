@@ -1,0 +1,154 @@
+<html>
+    <style>
+        html{
+            margin: auto;
+            max-width: 1000px;
+        }
+
+        body{
+            text-align: center;
+        }
+
+        h1.main_title{
+            font-size: 3em;
+            color: black;
+        }
+
+        @keyframes backgroundScroll {
+            0% { background-position: 50% 50%; }
+            33% { background-position: 50% 1%; }
+            40% { background-position: 50% 1%; }
+            66% { background-position: 50% 99%; }
+            75% { background-position: 50% 99%; }
+            100% { background-position: 50% 50%; }
+        }
+        /* added pauses to each edge of the image */
+
+        div.main_title {
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin: auto;
+            background-position: 50% 50%;
+            animation: backgroundScroll 10s ease-in-out 1s infinite;
+            border-radius: 2em;
+            box-shadow: rgba(3, 8, 20, 0.1) 0px 0.15rem 0.5rem, rgba(2, 8, 20, 0.1) 0px 0.075rem 0.175rem;
+        }
+
+        div.error{
+            background-color:indianred;
+            border-radius: 2em;
+            padding: 1em;
+            margin: 1em;
+            box-shadow: rgba(3, 8, 20, 0.1) 0px 0.15rem 0.5rem, rgba(2, 8, 20, 0.1) 0px 0.075rem 0.175rem;
+        }
+
+        div.create{
+            background-color: crimson;
+            border-radius: 2em;
+            padding: 1em;
+            margin: 1em;
+            box-shadow: rgba(3, 8, 20, 0.1) 0px 0.15rem 0.5rem, rgba(2, 8, 20, 0.1) 0px 0.075rem 0.175rem;
+        }
+
+        div.form{
+            padding: 1em;
+        }
+
+        div.instructions{
+            background-color:gainsboro;
+            border-radius: 2em;
+            padding: 1em;
+            margin: 1em;
+            box-shadow: rgba(3, 8, 20, 0.1) 0px 0.15rem 0.5rem, rgba(2, 8, 20, 0.1) 0px 0.075rem 0.175rem;
+        }
+
+        div.creds{
+            background-color: skyblue;
+            border-radius: 2em;
+            padding: 1em;
+            margin: 1em;
+            box-shadow: rgba(3, 8, 20, 0.1) 0px 0.15rem 0.5rem, rgba(2, 8, 20, 0.1) 0px 0.075rem 0.175rem;
+        }
+
+        div.note{
+            background-color:sandybrown;
+            border-radius: 2em;
+            padding: 1em;
+            margin: 1em;
+            box-shadow: rgba(3, 8, 20, 0.1) 0px 0.15rem 0.5rem, rgba(2, 8, 20, 0.1) 0px 0.075rem 0.175rem;
+        }
+    </style>
+
+    <head>
+
+    </head>
+
+    <body>
+
+        <div class="main_title">
+            <h1 class="main_title">
+                World of Games
+            </h1>
+        </div>
+        <div class="create">
+            <h2>
+                Welcome {{username}}!<br>
+                Choose a game and difficulty
+            </h2>
+            <form action="{{url_for('redirecting')}}" method="get">
+                <Select name="operations" id='operations' required='required'>
+                    <option name="games" value="memory">Memory Game</option>
+                    <option name="games" value="currency">Currency Roulette Game</option>
+                    <option name="games" value="guess">Guess Game</option>
+                </Select><br><br>
+                    <input type="radio" name="options" id="option1" value="1"> 1 </input>
+                    <input type="radio" name="options" id="option2" value="2"> 2 </input>
+                    <input type="radio" name="options" id="option3" value="3"> 3 </input>
+                    <input type="radio" name="options" id="option4" value="4"> 4 </input>
+                    <input type="radio" name="options" id="option5" value="5"> 5 </input>
+                        <button id="sub" type='submit'>Start</button>
+
+        </form>
+        </div>
+<div class="instructions">
+            <h3>
+                How it works
+            </h3>
+
+            <p>
+                Enter your name to start the challenge. Then you will choose a game and difficulty level.
+            </p>
+            <h3>Memory Game</h3>
+            <p>
+              The purpose of memory game is to display an amount of random numbers to the users for 0.7
+              seconds and then prompt them from the user for the numbers that he remember. If he was right
+              with all the numbers the user will win otherwise he will lose.
+            </p>
+            <h3>Currency Roulette</h3>
+            <p>
+              This game will use the free currency api to get the current exchange rate from USD to ILS, will
+              generate a new random number between 1-100 a will ask the user what he thinks is the value of
+              the generated number from USD to ILS, depending on the user’s difficulty his answer will be
+              correct if the guessed value is between the interval surrounding the correct answer
+            </p>
+            <h3>Guess Game</h3>
+            <p>
+              The purpose of guess game is to start a new game, cast a random number between 1 to a
+              variable called difficulty. The game will get a number input from the
+            </p>
+
+        </div>
+        <div class="creds">
+            <p>
+                Written by Henry
+            </p>
+
+            <p>
+                Code can be found at <a href="https://github.com/hanrikos"> Github </a>
+            </p>
+        </div>
+
+    </body>
+
+</html>
+2022 DevopsExperts, Inc.
